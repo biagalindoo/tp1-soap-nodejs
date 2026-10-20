@@ -4,7 +4,8 @@ Checklist transcrita das quatro imagens do enunciado fornecidas pela dupla.
 Entrega em **4 de novembro de 2026**. Máximo de duas pessoas por grupo;
 defesa individualizada.
 
-Todos os itens funcionais abaixo estão pendentes nesta preparação inicial.
+Os itens funcionais continuam pendentes. O contrato local já está definido em
+`wsdl/calculator.wsdl`; a exposição por HTTP e os testes de integração ainda faltam.
 
 ## Serviço e contrato
 
@@ -36,7 +37,7 @@ Todos os itens funcionais abaixo estão pendentes nesta preparação inicial.
 - [ ] Código-fonte do servidor SOAP.
 - [ ] Código-fonte do cliente e testes.
 - [ ] README com instruções claras de instalação, execução e testes.
-- [ ] Ficheiro WSDL do serviço.
+- [x] Ficheiro WSDL do serviço (contrato local; integração por verificar).
 - [ ] Exemplos de requisição e resposta.
 
 ## Critérios de avaliação

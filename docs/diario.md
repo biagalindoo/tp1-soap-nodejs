@@ -7,7 +7,7 @@ realizado e verificações efetivamente executadas.
 ## Etapa 1 - Preparação inicial
 
 - **Data:** 20 de outubro de 2026.
-- **Estado:** preparação pendente de commit; revisão e commit pela Beatriz.
+- **Estado:** concluída e registada no commit `9aee9b2` pela Beatriz.
 - **Mensagem sugerida:** `chore: preparar estrutura inicial do TP1 SOAP`.
 
 ### Alterações preparadas
@@ -28,8 +28,34 @@ realizado e verificações efetivamente executadas.
 
 ### Próximo passo
 
-A Beatriz deve rever os ficheiros, atualizar o estado desta entrada e fazer
-o primeiro commit. Em seguida, a dupla pode começar pela definição do WSDL.
+Preparação concluída. Continuar com a definição do WSDL, descrita na etapa 2.
+
+## Etapa 2 - Contrato WSDL
+
+- **Data:** 20 de outubro de 2026.
+- **Estado:** alterações preparadas; revisão e commit pendentes.
+- **Mensagem sugerida:** `feat: definir contrato WSDL da calculadora`.
+
+### Alterações preparadas
+
+- Criado `wsdl/calculator.wsdl`, com `add`, `subtract`, `multiply` e `divide`.
+- Definidos argumentos obrigatórios `a` e `b` e resposta `result`, do tipo `xsd:double`.
+- Definidos mensagens, interface, binding SOAP 1.1 e endereço local previsto.
+- README atualizado com explicação de cada secção do contrato e estado do projeto.
+- Checklist atualizada para indicar a existência do ficheiro WSDL local.
+
+### Verificações
+
+- XML analisado e estrutura do contrato conferida: quatro operações,
+  referências internas, argumentos e resultados numéricos e binding HTTP/SOAP.
+- Conferidos os tipos do esquema e exemplos de pedidos/respostas das quatro operações.
+- `git diff --check` executado sem erros de espaços em branco.
+- Ainda falta importar o contrato no node-soap e no SoapUI e testar chamadas reais.
+
+### Próximo passo
+
+Rever o WSDL e fazer o segundo commit. Depois implementar a lógica das operações
+e a validação dos argumentos, incluindo divisão por zero e valores não finitos.
 
 ## Modelo para as próximas entradas
 
