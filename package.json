@@ -1,0 +1,6 @@
+{
+  "name": "tp1-soap-nodejs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TP1 de Desenvolvimento de Aplicações Web 2026/27: serviço SOAP em Node.js"
+}
