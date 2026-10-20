@@ -4,21 +4,25 @@ Checklist transcrita das quatro imagens do enunciado fornecidas pela dupla.
 Entrega em **4 de novembro de 2026**. Máximo de duas pessoas por grupo;
 defesa individualizada.
 
-Os itens funcionais continuam pendentes. O contrato local já está definido em
-`wsdl/calculator.wsdl`; a exposição por HTTP e os testes de integração ainda faltam.
+O contrato local está definido em `wsdl/calculator.wsdl` e a lógica aritmética
+está implementada e testada localmente. A exposição por HTTP/SOAP e os testes
+de integração ainda faltam. Os itens assinalados como lógica local não comprovam
+o funcionamento do serviço SOAP completo.
 
 ## Serviço e contrato
 
 - [ ] Usar Node.js e SOAP sobre HTTP.
 - [ ] Escolher a biblioteca `soap` (recomendada) ou uma equivalente.
-- [ ] Implementar `add(a, b)`, devolvendo a soma.
-- [ ] Implementar `subtract(a, b)`, devolvendo a diferença de a e b.
-- [ ] Implementar `multiply(a, b)`, devolvendo o produto.
-- [ ] Implementar `divide(a, b)`, devolvendo o quociente de a por b.
+- [x] Implementar `add(a, b)`, devolvendo a soma (lógica local).
+- [x] Implementar `subtract(a, b)`, devolvendo a diferença de a e b (lógica local).
+- [x] Implementar `multiply(a, b)`, devolvendo o produto (lógica local).
+- [x] Implementar `divide(a, b)`, devolvendo o quociente de a por b (lógica local).
 - [ ] Expor um WSDL que descreva as quatro operações, argumentos e respostas.
 - [ ] Validar os parâmetros para garantir que são números, atendendo também ao WSDL.
+  A validação local já existe; falta verificar a integração com o WSDL e o servidor.
 - [ ] Tratar entradas inválidas adequadamente.
 - [ ] Tratar divisão por zero com erro ou mensagem apropriada.
+  A lógica local já lança um erro; falta convertê-lo numa resposta SOAP apropriada.
 - [ ] Separar servidor, cliente e lógica de negócio em módulos claros.
 - [ ] Usar nomes significativos, comentários úteis e tratamento de erros.
 
@@ -29,6 +33,7 @@ Os itens funcionais continuam pendentes. O contrato local já está definido em
 - [ ] Demonstrar chamadas e respostas no terminal ou em logs.
 - [ ] Visualizar requisições e respostas ao nível HTTP e SOAP.
 - [ ] Verificar as quatro operações, entradas inválidas e divisão por zero.
+  Testes unitários locais concluídos; faltam os testes através do cliente SOAP.
 - [ ] Demonstrar o consumo do serviço também na ferramenta SoapUI.
 - [ ] As duas alunas conseguirem justificar o código e demonstrar a utilização individualmente.
 
