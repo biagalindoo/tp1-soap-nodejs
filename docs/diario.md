@@ -23,6 +23,32 @@ realizado e verificações efetivamente executadas.
 
 ### Próximo passo
 
+## Etapa 4 - Servidor SOAP sobre HTTP
+
+- **Data de preparação:** 21 de outubro de 2026.
+
+### O que mudou
+
+- Criado `src/server.js`, que carrega o WSDL e liga as quatro operações à calculadora.
+- Instalado `soap` 1.14.0, com versões guardadas em `package-lock.json`.
+- Definido Node.js 20.19 ou superior, conforme a versão mínima da biblioteca.
+- Acrescentado `npm start`, com servidor em `http://localhost:8000/calculator` e WSDL em `/calculator?wsdl`.
+- Erros de argumentos e divisão por zero devolvem SOAP Faults com mensagem em português.
+- A conversão XML rejeita números malformados, como `2abc`.
+- Criados testes HTTP/SOAP em `tests/server.test.js` e atualizados README e checklist.
+
+### Verificação
+
+- `npm test`: 21 testes aprovados (7 de cálculos e 14 de integração).
+- Verificados WSDL por HTTP, operações, erros, argumentos em falta, valores vazios e resultados não finitos.
+- `git diff --check`: sem erros nas alterações desta etapa.
+- Servidor de demonstração verificado com `npm start` e pedido HTTP real.
+
+### Próximo passo
+
+Rever e fazer o commit desta etapa. Depois criar um cliente Node.js simples
+que consuma as operações e mostre resultados e erros no terminal.
+
 ## Modelo para as próximas entradas
 
 Copiar e preencher este modelo em cada nova etapa:

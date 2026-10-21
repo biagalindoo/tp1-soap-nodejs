@@ -21,14 +21,17 @@ A preparação inicial está concluída e o contrato WSDL das quatro operações
 está definido em [wsdl/calculator.wsdl](wsdl/calculator.wsdl).
 A lógica aritmética e a validação estão implementadas em `src/calculator.js`,
 com testes unitários em `tests/calculator.test.js`.
-Ainda não existem servidor, cliente ou testes de integração SOAP.
+O servidor SOAP está em `src/server.js`, com testes HTTP/SOAP em
+`tests/server.test.js`. Ainda faltam o cliente de demonstração Node.js,
+os logs detalhados e a demonstração no SoapUI.
 
 O campo `private` do `package.json` impede publicação acidental no npm;
 a visibilidade do repositório no GitHub é independente desse campo.
 
 ## Preparação do ambiente
 
-Ter Node.js com npm, Git e VS Code instalados. Verificar no terminal:
+Ter Node.js 20.19 ou superior com npm, Git e VS Code instalados.
+A biblioteca SOAP exige essa versão mínima. Verificar no terminal:
 
 ```sh
 node --version
@@ -36,14 +39,29 @@ npm --version
 git --version
 ```
 
-Abrir esta pasta no VS Code. Não é necessário executar `npm install` nesta
-fase: ainda não existem dependências externas. Os comandos para executar o
-servidor e o cliente serão acrescentados quando essas partes existirem.
+Abrir esta pasta no VS Code e instalar as dependências:
+
+```sh
+npm ci
+```
+
+A dependência `soap` está registada no `package.json`. O `package-lock.json`
+guarda as versões utilizadas e deve ser incluído no commit; `node_modules` fica fora.
+
+## Executar o servidor SOAP
+
+```sh
+npm start
+```
+
+Manter esse terminal aberto. O serviço fica em `http://localhost:8000/calculator`
+e o WSDL pode ser consultado no navegador em `http://localhost:8000/calculator?wsdl`.
+Parar com `Ctrl+C`. O serviço recebe pedidos SOAP por HTTP POST; ainda não há
+interface gráfica. Se a porta 8000 estiver ocupada, parar o outro processo que a utiliza.
 
 ## Cálculos e testes locais
 
-Usar Node.js 18 ou superior, com suporte ao executor de testes `node:test`.
-No terminal da pasta do projeto:
+No terminal da pasta do projeto (pode ser um segundo terminal):
 
 ```sh
 npm test
@@ -51,7 +69,9 @@ npm test
 
 Os testes cobrem as quatro operações, números negativos, zero, decimais,
 argumentos inválidos, divisão por zero e resultados fora do intervalo numérico.
-São testes da lógica local; ainda não fazem chamadas HTTP/SOAP.
+São 7 testes da lógica local e 14 de integração HTTP/SOAP. Os testes de integração
+iniciam um servidor temporário numa porta livre e fecham-no no fim; não dependem
+do servidor iniciado com `npm start`.
 
 Exemplo de utilização da soma no terminal:
 
@@ -64,7 +84,9 @@ O resultado esperado é `5`. As funções recebem dois valores JavaScript do tip
 automaticamente. Argumentos inválidos lançam `TypeError`; divisão por zero e
 resultados não finitos lançam `RangeError`, com mensagens em português.
 Os cálculos usam a precisão habitual dos números JavaScript, sem arredondamento
-automático. A adaptação destas funções às mensagens SOAP fica para o servidor.
+automático. O servidor adapta os pedidos XML às funções e devolve `{ result }`.
+Erros esperados são convertidos em SOAP Faults 1.1, com código `soap:Client`,
+mensagem em português e HTTP 500.
 
 ## Documentação
 
@@ -75,7 +97,7 @@ automático. A adaptação destas funções às mensagens SOAP fica para o servi
 
 1. Rever o contrato WSDL das quatro operações, já preparado.
 2. Rever a lógica aritmética e a validação, já implementadas e testadas localmente.
-3. Disponibilizar o servidor SOAP sobre HTTP, separado da lógica de negócio.
+3. Rever o servidor SOAP e os testes de integração, já preparados.
 4. Criar o cliente Node.js, separado do servidor.
 5. Verificar operações e erros e apresentar requisições/respostas HTTP e SOAP.
 6. Demonstrar o consumo no SoapUI.
@@ -98,8 +120,9 @@ que o serviço deverá aceitar e devolver. Não executa os cálculos.
 
 Os dois argumentos são obrigatórios e usam o tipo numérico `xsd:double`,
 tal como o resultado. A lógica local já rejeita argumentos não numéricos,
-`NaN`, infinito e divisão por zero. Ainda falta integrar essa validação no
-servidor e verificar o comportamento das entradas recebidas por SOAP.
+`NaN`, infinito e divisão por zero. O servidor usa essa lógica e faz uma conversão
+numérica estrita do XML: texto como `2abc` não é aceite como o número 2.
+O esquema não substitui a validação dos valores recebidos.
 
 - `types`: estrutura XML dos pedidos e respostas.
 - `message`: associação das mensagens aos elementos XML.
@@ -107,9 +130,8 @@ servidor e verificar o comportamento das entradas recebidas por SOAP.
 - `binding`: utilização de SOAP 1.1 sobre HTTP, no estilo `document/literal`.
 - `service`: serviço `CalculatorService` e porta `CalculatorPort`.
 
-O endereço previsto é `http://localhost:8000/calculator`. Ainda não está ativo;
-quando existir servidor, o WSDL deverá ficar acessível em
-`http://localhost:8000/calculator?wsdl`. O namespace `urn:ualg:calculator`
+Com o servidor iniciado, o serviço está em `http://localhost:8000/calculator`
+e o WSDL em `http://localhost:8000/calculator?wsdl`. O namespace `urn:ualg:calculator`
 identifica o contrato e não corresponde a uma página web.
 
 Referência para a futura integração: [documentação da biblioteca node-soap](https://github.com/vpulim/node-soap).

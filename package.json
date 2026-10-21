@@ -2,8 +2,15 @@
   "name": "tp1-soap-nodejs",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "description": "TP1 de Desenvolvimento de Aplicações Web 2026/27: serviço SOAP em Node.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "node --test"
+  },
+  "dependencies": {
+    "soap": "1.14.0"
   }
 }

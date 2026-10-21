@@ -4,25 +4,22 @@ Checklist transcrita das quatro imagens do enunciado fornecidas pela dupla.
 Entrega em **4 de novembro de 2026**. Máximo de duas pessoas por grupo;
 defesa individualizada.
 
-O contrato local está definido em `wsdl/calculator.wsdl` e a lógica aritmética
-está implementada e testada localmente. A exposição por HTTP/SOAP e os testes
-de integração ainda faltam. Os itens assinalados como lógica local não comprovam
-o funcionamento do serviço SOAP completo.
+O WSDL e a lógica aritmética estão integrados num servidor HTTP/SOAP,
+com testes das quatro operações e de erros. Ainda faltam o cliente de
+demonstração, os logs HTTP/SOAP e a demonstração no SoapUI.
 
 ## Serviço e contrato
 
-- [ ] Usar Node.js e SOAP sobre HTTP.
-- [ ] Escolher a biblioteca `soap` (recomendada) ou uma equivalente.
+- [x] Usar Node.js e SOAP sobre HTTP.
+- [x] Escolher a biblioteca `soap` (recomendada) ou uma equivalente.
 - [x] Implementar `add(a, b)`, devolvendo a soma (lógica local).
 - [x] Implementar `subtract(a, b)`, devolvendo a diferença de a e b (lógica local).
 - [x] Implementar `multiply(a, b)`, devolvendo o produto (lógica local).
 - [x] Implementar `divide(a, b)`, devolvendo o quociente de a por b (lógica local).
-- [ ] Expor um WSDL que descreva as quatro operações, argumentos e respostas.
-- [ ] Validar os parâmetros para garantir que são números, atendendo também ao WSDL.
-  A validação local já existe; falta verificar a integração com o WSDL e o servidor.
-- [ ] Tratar entradas inválidas adequadamente.
-- [ ] Tratar divisão por zero com erro ou mensagem apropriada.
-  A lógica local já lança um erro; falta convertê-lo numa resposta SOAP apropriada.
+- [x] Expor um WSDL que descreva as quatro operações, argumentos e respostas.
+- [x] Validar os parâmetros para garantir que são números, atendendo também ao WSDL.
+- [x] Tratar entradas inválidas adequadamente (SOAP Fault).
+- [x] Tratar divisão por zero com erro ou mensagem apropriada (SOAP Fault).
 - [ ] Separar servidor, cliente e lógica de negócio em módulos claros.
 - [ ] Usar nomes significativos, comentários úteis e tratamento de erros.
 
@@ -39,10 +36,10 @@ o funcionamento do serviço SOAP completo.
 
 ## Materiais da entrega
 
-- [ ] Código-fonte do servidor SOAP.
+- [x] Código-fonte do servidor SOAP.
 - [ ] Código-fonte do cliente e testes.
 - [ ] README com instruções claras de instalação, execução e testes.
-- [x] Ficheiro WSDL do serviço (contrato local; integração por verificar).
+- [x] Ficheiro WSDL do serviço, exposto por HTTP e usado nos testes SOAP.
 - [ ] Exemplos de requisição e resposta.
 
 ## Critérios de avaliação
