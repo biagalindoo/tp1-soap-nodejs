@@ -7,7 +7,7 @@ Trabalho de Desenvolvimento de Aplicações Web 2026/27, Universidade do Algarve
 ## Dupla
 
 - Beatriz Pedrosa Monteiro Galindo - [biagalindoo](https://github.com/biagalindoo)
-- Bruna - [bcorreia-netizen](https://github.com/bcorreia-netizen)
+- Bruna Ineida da Graça Lima Correia- [bcorreia-netizen](https://github.com/bcorreia-netizen)
 
 ## Objetivo
 
