@@ -4,9 +4,10 @@ Checklist transcrita das quatro imagens do enunciado fornecidas pela dupla.
 Entrega em **4 de novembro de 2026**. Máximo de duas pessoas por grupo;
 defesa individualizada.
 
-O WSDL e a lógica aritmética estão integrados num servidor HTTP/SOAP,
-com testes das quatro operações e de erros. Ainda faltam o cliente de
-demonstração, os logs HTTP/SOAP e a demonstração no SoapUI.
+O WSDL e a lógica aritmética estão integrados num servidor HTTP/SOAP, com cliente
+Node.js e testes das quatro operações e de erros. A demonstração prática no
+SoapUI foi realizada em 25 de outubro de 2026; a defesa individual continua a
+depender da dupla.
 
 ## Serviço e contrato
 
@@ -20,27 +21,26 @@ demonstração, os logs HTTP/SOAP e a demonstração no SoapUI.
 - [x] Validar os parâmetros para garantir que são números, atendendo também ao WSDL.
 - [x] Tratar entradas inválidas adequadamente (SOAP Fault).
 - [x] Tratar divisão por zero com erro ou mensagem apropriada (SOAP Fault).
-- [ ] Separar servidor, cliente e lógica de negócio em módulos claros.
-- [ ] Usar nomes significativos, comentários úteis e tratamento de erros.
+- [x] Separar servidor, cliente e lógica de negócio em módulos claros.
+- [x] Usar nomes significativos e tratamento de erros.
 
 ## Cliente, testes e defesa
 
-- [ ] Criar um cliente SOAP simples em Node.js para todas as operações.
-- [ ] Processar as respostas e apresentar resultados ou erros corretamente.
-- [ ] Demonstrar chamadas e respostas no terminal ou em logs.
-- [ ] Visualizar requisições e respostas ao nível HTTP e SOAP.
-- [ ] Verificar as quatro operações, entradas inválidas e divisão por zero.
-  Testes unitários locais concluídos; faltam os testes através do cliente SOAP.
-- [ ] Demonstrar o consumo do serviço também na ferramenta SoapUI.
+- [x] Criar um cliente SOAP simples em Node.js para todas as operações.
+- [x] Processar as respostas e apresentar resultados ou erros corretamente.
+- [x] Demonstrar chamadas e respostas no terminal ou em logs.
+- [x] Visualizar requisições e respostas ao nível HTTP e SOAP no SoapUI; envelope, cabeçalhos e registo HTTP verificados.
+- [x] Verificar as quatro operações, entradas inválidas e divisão por zero, nos testes automatizados e no SoapUI.
+- [x] Demonstrar o consumo do serviço na ferramenta SoapUI: quatro operações, divisão por zero e argumento inválido.
 - [ ] As duas alunas conseguirem justificar o código e demonstrar a utilização individualmente.
 
 ## Materiais da entrega
 
 - [x] Código-fonte do servidor SOAP.
-- [ ] Código-fonte do cliente e testes.
-- [ ] README com instruções claras de instalação, execução e testes.
+- [x] Código-fonte do cliente e testes do servidor/serviço.
+- [x] README com instruções de instalação, execução, testes e demonstração SoapUI.
 - [x] Ficheiro WSDL do serviço, exposto por HTTP e usado nos testes SOAP.
-- [ ] Exemplos de requisição e resposta.
+- [x] Exemplos de requisição e resposta SOAP no README.
 
 ## Critérios de avaliação
 

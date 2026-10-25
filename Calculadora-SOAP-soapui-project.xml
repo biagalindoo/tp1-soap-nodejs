@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="f68481d0-a135-4d81-adf3-610faa408bee" activeEnvironment="Default" name="Calculadora SOAP" resourceRoot="" soapui-version="5.9.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="ec12e208-0e7f-4a6e-a855-f178904790f7" wsaVersion="NONE" name="CalculatorBinding" type="wsdl" bindingName="{urn:ualg:calculator}CalculatorBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8000/calculator?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8000/calculator?wsdl"><con:part><con:url>http://localhost:8000/calculator?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CalculatorService" targetNamespace="urn:ualg:calculator" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:ualg:calculator">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:ualg:calculator" elementFormDefault="qualified">
+      <xsd:complexType name="Operands">
+        <xsd:sequence>
+          <xsd:element name="a" type="xsd:double"/>
+          <xsd:element name="b" type="xsd:double"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CalculationResult">
+        <xsd:sequence>
+          <xsd:element name="result" type="xsd:double"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="add" type="tns:Operands"/>
+      <xsd:element name="addResponse" type="tns:CalculationResult"/>
+      <xsd:element name="subtract" type="tns:Operands"/>
+      <xsd:element name="subtractResponse" type="tns:CalculationResult"/>
+      <xsd:element name="multiply" type="tns:Operands"/>
+      <xsd:element name="multiplyResponse" type="tns:CalculationResult"/>
+      <xsd:element name="divide" type="tns:Operands"/>
+      <xsd:element name="divideResponse" type="tns:CalculationResult"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AddRequest">
+    <wsdl:part name="parameters" element="tns:add"/>
+  </wsdl:message>
+  <wsdl:message name="AddResponse">
+    <wsdl:part name="parameters" element="tns:addResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SubtractRequest">
+    <wsdl:part name="parameters" element="tns:subtract"/>
+  </wsdl:message>
+  <wsdl:message name="SubtractResponse">
+    <wsdl:part name="parameters" element="tns:subtractResponse"/>
+  </wsdl:message>
+  <wsdl:message name="MultiplyRequest">
+    <wsdl:part name="parameters" element="tns:multiply"/>
+  </wsdl:message>
+  <wsdl:message name="MultiplyResponse">
+    <wsdl:part name="parameters" element="tns:multiplyResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DivideRequest">
+    <wsdl:part name="parameters" element="tns:divide"/>
+  </wsdl:message>
+  <wsdl:message name="DivideResponse">
+    <wsdl:part name="parameters" element="tns:divideResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CalculatorPortType">
+    <wsdl:operation name="add">
+      <wsdl:input message="tns:AddRequest"/>
+      <wsdl:output message="tns:AddResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="subtract">
+      <wsdl:input message="tns:SubtractRequest"/>
+      <wsdl:output message="tns:SubtractResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="multiply">
+      <wsdl:input message="tns:MultiplyRequest"/>
+      <wsdl:output message="tns:MultiplyResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="divide">
+      <wsdl:input message="tns:DivideRequest"/>
+      <wsdl:output message="tns:DivideResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalculatorBinding" type="tns:CalculatorPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="add">
+      <soap:operation soapAction="urn:ualg:calculator/add"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="subtract">
+      <soap:operation soapAction="urn:ualg:calculator/subtract"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multiply">
+      <soap:operation soapAction="urn:ualg:calculator/multiply"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="divide">
+      <soap:operation soapAction="urn:ualg:calculator/divide"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculatorService">
+    <wsdl:port name="CalculatorPort" binding="tns:CalculatorBinding">
+      <soap:address location="http://localhost:8000/calculator"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8000/calculator</con:endpoint></con:endpoints><con:operation id="28e9ad2b-c37f-4122-8fc6-72a4a2d022d6" isOneWay="false" action="urn:ualg:calculator/add" name="add" bindingOperationName="add" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="87c9ade5-4403-4957-b849-44851247244e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ualg:calculator">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:add>\r
+         <urn:a>2</urn:a>\r
+         <urn:b>3</urn:b>\r
+      </urn:add>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:ualg:calculator/add"/></con:call></con:operation><con:operation id="59e4741d-b6e8-4bc4-9891-d9204e2f4649" isOneWay="false" action="urn:ualg:calculator/divide" name="divide" bindingOperationName="divide" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a3b09f71-3cb3-40a9-bd01-a1823cd4471a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ualg:calculator">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:divide>\r
+         <urn:a>6</urn:a>\r
+         <urn:b>3</urn:b>\r
+      </urn:divide>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:ualg:calculator/divide"/></con:call></con:operation><con:operation id="f60d53f5-ac8f-4831-9eed-e46502f8ca29" isOneWay="false" action="urn:ualg:calculator/multiply" name="multiply" bindingOperationName="multiply" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="657d6a84-4cbb-4fc5-a9b5-f7c7c3d077b8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ualg:calculator">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:multiply>\r
+         <urn:a>5</urn:a>\r
+         <urn:b>2</urn:b>\r
+      </urn:multiply>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:ualg:calculator/multiply"/></con:call></con:operation><con:operation id="226ddf0a-dc8c-45ff-b4c0-3034b2d3f863" isOneWay="false" action="urn:ualg:calculator/subtract" name="subtract" bindingOperationName="subtract" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d7349648-78ad-449a-bd68-188edfc74162" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8000/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:ualg:calculator">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <urn:subtract>\r
+         <urn:a>5</urn:a>\r
+         <urn:b>2</urn:b>\r
+      </urn:subtract>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:ualg:calculator/subtract"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

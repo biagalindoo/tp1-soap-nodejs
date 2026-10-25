@@ -1,5 +1,6 @@
 const { test, before, after } = require('node:test');
 const assert = require('node:assert/strict');
+const soap = require('soap');
 const { createServer } = require('../src/server');
 
 let server;
@@ -41,6 +42,16 @@ test('o servidor disponibiliza o WSDL por HTTP', async () => {
   for (const operation of ['add', 'subtract', 'multiply', 'divide']) {
     assert.ok(xml.includes(`name="${operation}"`));
   }
+});
+
+test('o cliente SOAP consegue carregar o WSDL e chamar add', async () => {
+  const client = await soap.createClientAsync(
+    `${baseUrl}/calculator?wsdl`,
+    {},
+    `${baseUrl}/calculator`,
+  );
+  const [result] = await client.addAsync({ a: 2, b: 3 });
+  assert.equal(result.result, 5);
 });
 
 for (const [operation, a, b, expected] of [

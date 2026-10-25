@@ -8,7 +8,8 @@
   "description": "TP1 de Desenvolvimento de Aplicações Web 2026/27: serviço SOAP em Node.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "node --test"
+    "test": "node --test",
+    "client": "node src/client.js"
   },
   "dependencies": {
     "soap": "1.14.0"
